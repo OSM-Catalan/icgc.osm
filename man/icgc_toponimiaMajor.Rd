@@ -6,7 +6,8 @@ Nomenclàtor oficial de toponímia major de Catalunya
 }
 \description{
 Taula amb les dades de l'edició del 2020 amb columnes afegides amb informació
-d'OSM tretes de `toponimsCat::municipis` i `toponimsCat::comarca`.
+d'OSM tretes de `toponimsCat::municipis` (`municipi_*`) i
+`toponimsCat::comarques` (`comarca_*`).
 }
 \usage{data("icgc_toponimiaMajor")}
 \format{
@@ -49,8 +50,12 @@ d'OSM tretes de `toponimsCat::municipis` i `toponimsCat::comarca`.
   }
 }
 \details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-Les coordenades del punt d'inserció dels topònims (`UTMX`, `UTMY`) està en la projecció ETRS89 UTM fus 31 Nord (\url{https://epsg.io/25831}). Vegeu els exemples.
+Les coordenades del punt d'inserció dels topònims (`UTMX`, `UTMY`) està en la
+projecció ETRS89 UTM fus 31 Nord (\url{https://epsg.io/25831}). Vegeu els
+exemples.
+}
+\note{
+Les dades estan sota llicència ODbL 1.0 segons l'\href{https://wiki.openstreetmap.org/wiki/File:20230109_CartaObertaICGC-OSM_SIGNADA.pdf}{acord amb l'ICGC}.
 }
 \source{
 \url{https://icgc.cat/Ciutada/Informa-t/Llibres-i-fons-documentals/Llibres-en-PDF/Toponimia/Nomenclator-oficial-de-toponimia-major-de-Catalunya}
@@ -59,8 +64,16 @@ Les coordenades del punt d'inserció dels topònims (`UTMX`, `UTMY`) està en la
 %%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
-data(icgc_toponimiaMajor)
 # Crea un objecte `sf` amb els punts de les coordenades
-dgeo<- sf::st_as_sf(icgc_toponimiaMajor, coords=c("UTMX", "UTMY"), crs=sf::st_crs("EPSG:25831"))
+dgeo<- sf::st_as_sf(
+  icgc_toponimiaMajor,
+  coords=c("UTMX", "UTMY"),
+  crs=sf::st_crs("EPSG:25831")
+)
 }
+\seealso{
+Altres dades:
+\code{\link{icgc_toponimia}}
+}
+\concept{dades}
 \keyword{datasets}

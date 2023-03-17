@@ -9,7 +9,7 @@ Dades de la Toponímia de l'ICGC
 }
 \usage{data("icgc_toponimia")}
 \format{
-  A data frame with 225445 observations on the following 34 variables.
+  Un data frame amb 225445 files per les següents 34 columnes.
   \describe{
     \item{\code{filaICGC}}{Número de fila del fitxer original}
     \item{\code{Toponim}}{}
@@ -48,8 +48,10 @@ Dades de la Toponímia de l'ICGC
   }
 }
 \details{
-%%  ~~ If necessary, more details than the __description__ above ~~
 Les coordenades del punt d'inserció dels topònims (`UTMX_ETRS89`, `UTMY_ETRS89`) està en la projecció ETRS89 UTM fus 31 Nord (\url{https://epsg.io/25831}). Vegeu els exemples.
+}
+\note{
+Les dades estan sota llicència ODbL 1.0 segons l'\href{https://wiki.openstreetmap.org/wiki/File:20230109_CartaObertaICGC-OSM_SIGNADA.pdf}{acord amb l'ICGC}.
 }
 \source{
 \url{https://icgc.cat/Descarregues/Llocs/Noms-geografics-NGCat}
@@ -58,8 +60,12 @@ Les coordenades del punt d'inserció dels topònims (`UTMX_ETRS89`, `UTMY_ETRS89
 %%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
-data(icgc_toponimia)
 # Crea un objecte `sf` amb els punts de les coordenades
 dgeo<- sf::st_as_sf(icgc_toponimia, coords=c("UTMX_ETRS89", "UTMY_ETRS89"), crs=sf::st_crs("EPSG:25831"))
 }
+\seealso{
+Altres dades:
+\code{\link{icgc_toponimiaMajor}}
+}
+\concept{dades}
 \keyword{datasets}
