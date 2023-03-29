@@ -8,15 +8,20 @@ Authors@R: c(
   )
 Maintainer: Joan Maspons <joanmaspons@gmail.com>
 Description: Eines i dades per les col·laboracions entre l'ICGC i OSM.
-License: GPL (>= 3) i ODbL (1.0)
+License: GPL (>= 3) + file LICENSE.note
+License_is_FOSS: yes
 URL: https://github.com/OSM-Catalan/icgc.osm
 BugReports: https://github.com/OSM-Catalan/icgc.osm/issues
 Depends:
     R (>= 3.5)
-Imports: 
-    osmdata (>= 0.2.1.004)
+Suggest: 
+    dbTools,
+    openxlsx,
+    osmdata (>= 0.2.1),
+    sf
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 Language: ca
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

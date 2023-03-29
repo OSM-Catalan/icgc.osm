@@ -3,10 +3,12 @@
 repos:
 -   repo: https://github.com/lorenzwalthert/precommit
     rev: v0.3.2.9007
-    hooks: 
+    hooks:
     -   id: style-files
-        args: [--style_pkg=styler, --style_fun=tidyverse_style]    
+        args: [--style_pkg=styler, --style_fun=tidyverse_style]
     -   id: roxygenize
+        additional_dependencies:
+        - git2r
     # codemeta must be above use-tidy-description when both are used
     # -   id: codemeta-description-updated
     -   id: use-tidy-description
@@ -40,6 +42,7 @@ repos:
           \.github/workflows/.*|
           data/.*|
           )$
+        args: [--lang=ca_ES]
     -   id: lintr
     -   id: readme-rmd-rendered
     -   id: parsable-R
@@ -48,7 +51,7 @@ repos:
     -   id: deps-in-desc
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
-    hooks: 
+    hooks:
     -   id: check-added-large-files
         args: ['--maxkb=200']
     -   id: file-contents-sorter

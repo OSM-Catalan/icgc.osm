@@ -2,4 +2,6 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^\.Rproj\.user$
+^\.lintr$
 ^\.pre-commit-config\.yaml$
+^inst/WORDLIST$
