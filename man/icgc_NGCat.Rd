@@ -5,7 +5,6 @@
 Noms geogràfics (NGCat)
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of the dataset. ~~
 Dades de la Toponímia de l'ICGC
 }
 \usage{icgc_NGCat}
@@ -28,7 +27,7 @@ Dades de la Toponímia de l'ICGC
 \details{
 Les dades originals contenen 109 files duplicades que han estat eliminades.
 
-Les coordenades(\code{UTMX_ETRS89}, \code{UTMY_ETRS89}) està en metres i projecció ETRS89 UTM fus 31 Nord
+Les coordenades(\code{UTMX_ETRS89}, \code{UTMY_ETRS89}) estan en metres i projecció ETRS89 UTM fus 31 Nord
 (\url{https://epsg.io/25831}). Vegeu els exemples per veure com importar-les com a objectes espacials.
 Les coordenades són les més properes a l'element geogràfic designat de què es disposa (poden referir-se al mateix
 element geogràfic o al topònim; en aquest darrer cas, les coordenades poden correspondre a representacions del topònim
