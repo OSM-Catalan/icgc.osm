@@ -5,54 +5,34 @@
 Nomenclàtor oficial de toponímia major de Catalunya
 }
 \description{
-Taula amb les dades de l'edició del 2020 amb columnes afegides amb informació
-d'OSM tretes de `toponimsCat::municipis` (`municipi_*`) i
-`toponimsCat::comarques` (`comarca_*`).
+Taula amb les dades de l'edició del 2020.
 }
-\usage{data("icgc_toponimiaMajor")}
+\usage{icgc_toponimiaMajor}
 \format{
-  Un data frame amb 52923 files per les següents 34 columnes.
+  Un data frame amb 52709 files per les següents 19 columnes.
   \describe{
-    \item{\code{Topònim}}{a character vector}
-    \item{\code{Concepte}}{a character vector}
-    \item{\code{Municipi.1}}{a character vector}
-    \item{\code{Municipi.2}}{a character vector}
-    \item{\code{Municipi.3}}{a character vector}
-    \item{\code{Municipi.4}}{a character vector}
-    \item{\code{Comarca.1}}{a character vector}
-    \item{\code{Comarca.2}}{a character vector}
-    \item{\code{Comarca.3}}{a character vector}
-    \item{\code{Comarca.4}}{a character vector}
-    \item{\code{Comarca.5}}{a character vector}
-    \item{\code{UTM.X}}{a numeric vector}
-    \item{\code{UTM.Y}}{a numeric vector}
-    \item{\code{Volum}}{a numeric vector}
-    \item{\code{Pàgina}}{a character vector}
-    \item{\code{UTMX}}{Longitud del punt d'inserció en projecció ETRS89 UTM fus 31 Nord.}
-    \item{\code{UTMY}}{Latitud del punt d'inserció en projecció ETRS89 UTM fus 31 Nord.}
-    \item{\samp{name:icgc}}{Toponim normalitzat amb els articles a l'inici obtingut a partir de la columna `Topònim`.}
-    \item{\code{filaICGC}}{Número de fila al fitxer original.}
-    \item{\code{municipi_osm}}{Nom del municipi a OSM corresponent a `Municipi.1` de l'ICGC.}
-    \item{\samp{municipi_name:ca}}{Etiqueta `name:ca` del municipi a OSM.}
-    \item{\code{municipi_regio}}{Regio segons `toponimsCat::municipis`.}
-    \item{\code{municipi_comarca}}{Comarca del municipi a OSM.}
-    \item{\code{municipi_id}}{Identificador numèric del municipi a OSM.}
-    \item{\code{municipi_type}}{Tipus d'objecte del municipi a OSM.}
-    \item{\code{municipi_wikidata}}{Codi wikidata del municipi a OSM}
-    \item{\code{municipi_admin_level}}{Etiqueta `admin_level` del municipi a OSM.}
-    \item{\code{municipi_comarca.id}}{Identificador de la comarca del municipi a OSM.}
-    \item{\code{comarca_osm}}{Nom de la comarca a OSM corresponent a `Comarca.1` de l'ICGC.}
-    \item{\samp{comarca_name:ca}}{Etiqueta `name:ca` de la comarca a OSM.}
-    \item{\code{comarca_regio}}{Regio segons `toponimsCat::comarca`.}
-    \item{\code{comarca_id}}{Identificador numèric de la comarca a OSM.}
-    \item{\code{comarca_type}}{Tipus d'objecte de la comarca a OSM.}
-    \item{\code{comarca_admin_level}}{Etiqueta `admin_level` de la comarca a OSM.}
+    \item{\samp{name:icgc}}{Topònim normalitzat amb els articles a l'inici, obtingut a partir de la columna \code{Topònim}.}
+    \item{\code{Concepte}}{La categoria geogràfica a què s'ha associat el topònim.}
+    \item{\samp{ref:icgc}}{Número de fila al fitxer original.}
+    \item{\code{Comarca.[1-5]}}{a character vector}
+    \item{\code{Municipi.[1-4]}}{a character vector}
+    \item{\code{osm_idCom}}{Identificador numèric de la comarca (\code{Comarca.1}) a OSM.}
+    \item{\code{osm_idMun}}{Identificador numèric del municipi (\code{Municipi.1}) a OSM.}
+    \item{\code{osm_typeCom}}{Tipus d'objecte de la comarca a OSM.}
+    \item{\code{osm_typeMun}}{Tipus d'objecte del municipi a OSM.}
+    \item{\code{Topònim}}{Nom original al recull de toponímia major. Vegeu \code{name:icgc}.}
+    \item{\code{UTMX}}{Longitud del punt d'inserció.}
+    \item{\code{UTMY}}{Latitud del punt d'inserció.}
   }
 }
 \details{
-Les coordenades del punt d'inserció dels topònims (`UTMX`, `UTMY`) està en la
-projecció ETRS89 UTM fus 31 Nord (\url{https://epsg.io/25831}). Vegeu els
-exemples.
+Les dades originals contenen 3 files duplicades que han estat eliminades.
+
+Les coordenades(\code{UTMX}, \code{UTMY}) estan en metres i projecció ETRS89 UTM fus 31 Nord
+(\url{https://epsg.io/25831}). Vegeu els exemples per veure com importar-les com a objectes espacials.
+Les coordenades són les més properes a l'element geogràfic designat de què es disposa (poden referir-se al mateix
+element geogràfic o al topònim; en aquest darrer cas, les coordenades poden correspondre a representacions del topònim
+en cartografia de diferents escales).
 }
 \note{
 Les dades estan sota llicència ODbL 1.0 segons l'\href{https://wiki.openstreetmap.org/wiki/File:20230109_CartaObertaICGC-OSM_SIGNADA.pdf}{acord amb l'ICGC}.
@@ -61,19 +41,21 @@ Les dades estan sota llicència ODbL 1.0 segons l'\href{https://wiki.openstreetm
 \url{https://icgc.cat/Ciutada/Informa-t/Llibres-i-fons-documentals/Llibres-en-PDF/Toponimia/Nomenclator-oficial-de-toponimia-major-de-Catalunya}
 }
 \references{
-%%  ~~ possibly secondary sources and usages ~~
+Dades generades a \code{exec/ICGC_toponimia_major.r}.
 }
 \examples{
 # Crea un objecte `sf` amb els punts de les coordenades
+\dontrun{
 dgeo<- sf::st_as_sf(
   icgc_toponimiaMajor,
   coords=c("UTMX", "UTMY"),
   crs=sf::st_crs("EPSG:25831")
 )
 }
+}
 \seealso{
 Altres dades:
-\code{\link{icgc_toponimia}}
+\code{\link{tesaurus_municipis}}, \code{\link{tesaurus_comarques}}, \code{\link{icgc_NGCat}}
 }
 \concept{dades}
 \keyword{datasets}
