@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![pre-commit.ci
-status](https://results.pre-commit.ci/badge/github/OSM-Catalan/icgc.osm/main.svg)](https://results.pre-commit.ci/latest/github/OSM-Catalan/icgc.osm/main)
+[![pre-commit](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/pre-commit.yaml)
 <!-- badges: end -->
 
 `icgc.osm` és un repositori que serveix per coordinar la col·laboració
