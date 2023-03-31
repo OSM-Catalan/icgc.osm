@@ -38,4 +38,5 @@ jobs:
     #       github_token: ${{ secrets.GITHUB_TOKEN }}
     #       branch: ${{ github.ref }}
     env:
+      RENV_CONFIG_CACHE_ENABLED: FALSE
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
