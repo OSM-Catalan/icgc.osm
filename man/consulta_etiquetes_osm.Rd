@@ -9,15 +9,17 @@ consulta_etiquetes_osm(x, etiquetes)
 \arguments{
 \item{x}{un \code{data.frame} amb les columnes \code{osm_type} i \code{osm_id}.}
 
-\item{claus}{noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes dels objectes.}
+\item{claus}{noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes dels
+objectes.}
 }
 \value{
-Retorna \code{x} amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els valors de les etiquetes i conserva l'ordre de les columnes originals afegint les noves al final.
+Retorna \code{x} amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els
+valors de les etiquetes i conserva l'ordre de les columnes originals afegint les noves al final.
 }
 \description{
 Consulta etiquetes d'OSM
 }
 \examples{
-sel_comarques<- !tesaurus_comarques$icgc_NomCom \%in\% c("Andorra", "Aragó", "Catalunya", "França", "País Valencià")
-comarques<- consulta_etiquetes_osm(tesaurus_comarques[sel_comarques, ])
+sel_comarques <- !tesaurus_comarques$icgc_NomCom \%in\% c("Andorra", "Aragó", "Catalunya", "França", "País Valencià")
+comarques <- consulta_etiquetes_osm(tesaurus_comarques[sel_comarques, ])
 }

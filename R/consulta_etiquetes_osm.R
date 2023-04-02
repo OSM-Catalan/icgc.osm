@@ -1,9 +1,11 @@
 #' Consulta etiquetes d'OSM
 #'
 #' @param x un `data.frame` amb les columnes `osm_type` i `osm_id`.
-#' @param claus noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes dels objectes.
+#' @param claus noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes dels
+#'   objectes.
 #'
-#' @return Retorna `x` amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els valors de les etiquetes i conserva l'ordre de les columnes originals afegint les noves al final.
+#' @return Retorna `x` amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els
+#'   valors de les etiquetes i conserva l'ordre de les columnes originals afegint les noves al final.
 #' @export
 #'
 #' @examples
