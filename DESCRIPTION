@@ -27,4 +27,3 @@ Language: ca
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 X-schema.org-keywords: ICGC, Institut Cartogràfic i Geològic de Catalunya, open street map, openstreetmap, OSM, topònims, català
-
