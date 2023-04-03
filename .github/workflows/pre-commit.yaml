@@ -1,7 +1,7 @@
 name: pre-commit
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
 
@@ -10,18 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
           sudo apt-get install -y hunspell-ca
+
       - name: Set up Python
         uses: actions/setup-python@v3
+
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
+
       - uses: pre-commit-ci/lite-action@v1.0.1
         if: always()
+
     ## pre-commit-ci/lite alternative:
     #   - name: Commit files
     #     if: failure() && startsWith(github.ref, 'refs/heads')
