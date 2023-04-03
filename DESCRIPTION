@@ -8,7 +8,7 @@ Authors@R: c(
   )
 Maintainer: Joan Maspons <joanmaspons@gmail.com>
 Description: Eines i dades per les col·laboracions entre l'ICGC i OSM.
-License: GPL (>= 3) + file LICENSE.note
+License: CC BY 4.0 | GPL (>= 3)
 License_is_FOSS: yes
 URL: https://github.com/OSM-Catalan/icgc.osm
 BugReports: https://github.com/OSM-Catalan/icgc.osm/issues
