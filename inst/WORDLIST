@@ -4,10 +4,13 @@ admin
 aut
 Authors
 BugReports
+BY
 c
+CC
 character
 ci
 comment
+Config
 cre
 csv
 d'
@@ -16,6 +19,7 @@ dbTools
 Depends
 Description
 diff
+edition
 Encoding
 ETRS
 extdata
@@ -28,6 +32,7 @@ gmail
 gnu
 gpl-
 https
+httptest
 icgc
 ICGC
 issues
@@ -69,6 +74,7 @@ Package
 pre-commit
 R
 r
+R-CMD-check
 Regio
 Roxygen
 RoxygenNote
@@ -76,6 +82,9 @@ sf
 status
 street
 Suggest
+Suggests
+test-coverage
+testthat
 Toponim
 toponimsCat
 true
