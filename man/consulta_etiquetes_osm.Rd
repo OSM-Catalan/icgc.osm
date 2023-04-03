@@ -9,8 +9,8 @@ consulta_etiquetes_osm(x, etiquetes)
 \arguments{
 \item{x}{un \code{data.frame} amb les columnes \code{osm_type} i \code{osm_id}.}
 
-\item{claus}{noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes dels
-objectes.}
+\item{etiquetes}{noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes
+dels objectes.}
 }
 \value{
 Retorna \code{x} amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els
