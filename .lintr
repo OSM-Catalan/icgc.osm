@@ -3,3 +3,6 @@ linters: linters_with_defaults(
     commented_code_linter = NULL,
     object_name_linter = NULL
   )
+exclusions: list(
+    "tests/testthat/consulta_comarques/overpass-api.de/api/interpreter-d91d7a-POST.R"
+  )

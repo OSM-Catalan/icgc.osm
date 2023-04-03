@@ -25,7 +25,7 @@ test_that("consulta_etiquetes_osm works", {
   expect_s3_class(comarques_centre, "data.frame")
 
   expect_true(all(names(tesaurus_comarques) %in% names(comarques)))
-  expect_equal(names(tesaurus_comarques), names(comarques)[1:ncol(tesaurus_comarques)])
+  expect_equal(names(tesaurus_comarques), names(comarques)[seq_len(ncol(tesaurus_comarques))])
   expect_named(comarques_noms, c(names(tesaurus_comarques), "name", "name:ca", "name:oc"))
   expect_named(
     comarques_centre,
