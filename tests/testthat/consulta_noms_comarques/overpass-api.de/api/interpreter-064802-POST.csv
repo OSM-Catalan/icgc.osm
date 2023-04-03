@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2be5cfe58d019f9a6815de18ce809d4220bae77bcc93deaebef1825a86530a82
-size 2042
+@id	@type	name	name:ca	name:oc
+358838	relation	Berguedà	Berguedà	
+368462	relation	Selva	Selva	
+2140187	relation	Maresme	Maresme	
+2177382	relation	Alt Empordà	Alt Empordà	Aut Empordan
+2350067	relation	Vallès Occidental	Vallès Occidental	
+2350331	relation	Bages	Bages	
+2417889	relation	Barcelonès	Barcelonès	Barcelonés
+2417929	relation	Vallès Oriental	Vallès Oriental	Valés Oriental
+2422857	relation	Osona	Osona	
+2805694	relation	Baix Empordà	Baix Empordà	
+2805972	relation	Cerdanya	Cerdanya	Cerdanha
+2806754	relation	Ripollès	Ripollès	Ripollés
+2806999	relation	Garrotxa	Garrotxa	
+2807130	relation	Gironès	Gironès	Gironés
+2807146	relation	Pla de l'Estany	Pla de l'Estany	Plan de l'Estanh
+2808804	relation	Anoia	Anoia	Anoia
+2809162	relation	Solsonès	Solsonès	Solsonés
+2809457	relation	Baix Llobregat	Baix Llobregat	Bas Llobregat
+2809538	relation	Garraf	Garraf	Garraf
+2809672	relation	Alt Penedès	Alt Penedès	Aut Penedés
+2810001	relation	Alt Urgell	Alt Urgell	Aut Urgèl
+2810705	relation	Pallars Sobirà	Pallars Sobirà	Palhars Sobeiran
+2810776	relation	Val d'Aran	Vall d'Aran	Val d'Aran
+2810808	relation	Alta Ribagorça	Alta Ribagorça	Auta Ribagòrça
+2810954	relation	Pallars Jussà	Pallars Jussà	Palhars Sobeiran
+2815579	relation	Segarra	Segarra	
+2816276	relation	Noguera	Noguera	
+2818895	relation	Urgell	Urgell	Urgèl
+2819346	relation	Pla d'Urgell	Pla d'Urgell	Plan d'Urgèl
+2819857	relation	Segrià	Segrià	Segrià
+2819870	relation	Garrigues	Garrigues	Garrigues
+2822039	relation	Conca de Barberà	Conca de Barberà	Conca de Barberà
+2822130	relation	Alt Camp	Alt Camp	Aut Camp
+2822410	relation	Baix Penedès	Baix Penedès	Bas Penedés
+2822691	relation	Tarragonès	Tarragonès	Tarragonés
+2824935	relation	Baix Camp	Baix Camp	Bas Camp
+2826145	relation	Priorat	Priorat	Priorat
+2826423	relation	Baix Ebre	Baix Ebre	Bas Èbre
+2827413	relation	Montsià	Montsià	Montsià
+2829952	relation	Ribera d'Ebre	Ribera d'Ebre	Ribera d'Èbre
+2829953	relation	Terra Alta	Terra Alta	Tèrre Auta
+4791885	relation	Moianès	Moianès	

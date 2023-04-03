@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1e883660750329a5d71c8639586ed0ce6fcbff424b0c896e17fa397590a29a47
-size 2934
+@id	@type	@lon	@lat	name	name:ca	name:oc
+358838	relation	1.8402952	42.1103717	Berguedà	Berguedà	
+368462	relation	2.6891871	41.8546888	Selva	Selva	
+2140187	relation	2.5124775	41.6024395	Maresme	Maresme	
+2177382	relation	2.9321336	42.2902431	Alt Empordà	Alt Empordà	Aut Empordan
+2350067	relation	2.0428701	41.5661409	Vallès Occidental	Vallès Occidental	
+2350331	relation	1.7993868	41.7804742	Bages	Bages	
+2417889	relation	2.1612620	41.4049760	Barcelonès	Barcelonès	Barcelonés
+2417929	relation	2.3523480	41.6486686	Vallès Oriental	Vallès Oriental	Valés Oriental
+2422857	relation	2.2460331	41.9513563	Osona	Osona	
+2805694	relation	3.0600131	41.9465701	Baix Empordà	Baix Empordà	
+2805972	relation	1.7981772	42.3926994	Cerdanya	Cerdanya	Cerdanha
+2806754	relation	2.2571603	42.2729757	Ripollès	Ripollès	Ripollés
+2806999	relation	2.5556873	42.1730998	Garrotxa	Garrotxa	
+2807130	relation	2.8088387	41.9370996	Gironès	Gironès	Gironés
+2807146	relation	2.7703125	42.1219920	Pla de l'Estany	Pla de l'Estany	Plan de l'Estanh
+2808804	relation	1.6081218	41.6149868	Anoia	Anoia	Anoia
+2809162	relation	1.5149080	41.9815569	Solsonès	Solsonès	Solsonés
+2809457	relation	1.9810282	41.4333914	Baix Llobregat	Baix Llobregat	Bas Llobregat
+2809538	relation	1.7927329	41.2609631	Garraf	Garraf	Garraf
+2809672	relation	1.6857944	41.3682496	Alt Penedès	Alt Penedès	Aut Penedés
+2810001	relation	1.4088788	42.2414509	Alt Urgell	Alt Urgell	Aut Urgèl
+2810705	relation	1.1910900	42.5236699	Pallars Sobirà	Pallars Sobirà	Palhars Sobeiran
+2810776	relation	0.8384329	42.7253384	Val d'Aran	Vall d'Aran	Val d'Aran
+2810808	relation	0.8315735	42.4653972	Alta Ribagorça	Alta Ribagorça	Auta Ribagòrça
+2810954	relation	0.9330304	42.2806710	Pallars Jussà	Pallars Jussà	Palhars Sobeiran
+2815579	relation	1.3350335	41.7419394	Segarra	Segarra	
+2816276	relation	0.9378452	41.9043257	Noguera	Noguera	
+2818895	relation	1.0861269	41.6632089	Urgell	Urgell	Urgèl
+2819346	relation	0.9142457	41.6451962	Pla d'Urgell	Pla d'Urgell	Plan d'Urgèl
+2819857	relation	0.5684077	41.5641758	Segrià	Segrià	Segrià
+2819870	relation	0.8279492	41.4401563	Garrigues	Garrigues	Garrigues
+2822039	relation	1.1906778	41.4440063	Conca de Barberà	Conca de Barberà	Conca de Barberà
+2822130	relation	1.2904195	41.3396603	Alt Camp	Alt Camp	Aut Camp
+2822410	relation	1.5218204	41.2794928	Baix Penedès	Baix Penedès	Bas Penedés
+2822691	relation	1.2948932	41.1546279	Tarragonès	Tarragonès	Tarragonés
+2824935	relation	0.9830428	41.1440772	Baix Camp	Baix Camp	Bas Camp
+2826145	relation	0.8172476	41.2139646	Priorat	Priorat	Priorat
+2826423	relation	0.5499162	40.8544372	Baix Ebre	Baix Ebre	Bas Èbre
+2827413	relation	0.5179996	40.6527475	Montsià	Montsià	Montsià
+2829952	relation	0.6196728	41.1328120	Ribera d'Ebre	Ribera d'Ebre	Ribera d'Èbre
+2829953	relation	0.3858587	41.0272217	Terra Alta	Terra Alta	Tèrre Auta
+4791885	relation	2.0737237	41.8093396	Moianès	Moianès	
