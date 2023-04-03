@@ -4,13 +4,16 @@
 \alias{consulta_etiquetes_osm}
 \title{Consulta etiquetes d'OSM}
 \usage{
-consulta_etiquetes_osm(x, etiquetes)
+consulta_etiquetes_osm(x, etiquetes, centre = FALSE)
 }
 \arguments{
 \item{x}{un \code{data.frame} amb les columnes \code{osm_type} i \code{osm_id}.}
 
 \item{etiquetes}{noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes
 dels objectes.}
+
+\item{centre}{si és \code{TRUE}, afegeix les coordenades del centre de l'objecte a les columnes \code{osm_center_lon} i
+\code{osm_center_lat}.}
 }
 \value{
 Retorna \code{x} amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els
@@ -20,6 +23,7 @@ valors de les etiquetes i conserva l'ordre de les columnes originals afegint les
 Consulta etiquetes d'OSM
 }
 \examples{
-sel_comarques <- !tesaurus_comarques$icgc_NomCom \%in\% c("Andorra", "Aragó", "Catalunya", "França", "País Valencià")
+sel_comarques <- !tesaurus_comarques$icgc_NomCom \%in\%
+  c("Andorra", "Aragó", "Catalunya", "França", "País Valencià")
 comarques <- consulta_etiquetes_osm(tesaurus_comarques[sel_comarques, ])
 }

@@ -3,32 +3,45 @@
 #' @param x un `data.frame` amb les columnes `osm_type` i `osm_id`.
 #' @param etiquetes noms de les claus de les etiquetes a consultar. Si no s'especifica, s'afegeixen totes les etiquetes
 #'   dels objectes.
+#' @param centre si és `TRUE`, afegeix les coordenades del centre de l'objecte a les columnes `osm_center_lon` i
+#'   `osm_center_lat`.
 #'
 #' @return Retorna `x` amb les etiquetes dels objectes com a columnes. Si les columnes ja existien, actualitza els
 #'   valors de les etiquetes i conserva l'ordre de les columnes originals afegint les noves al final.
 #' @export
 #'
 #' @examples
-#' sel_comarques <- !tesaurus_comarques$icgc_NomCom %in% c("Andorra", "Aragó", "Catalunya", "França", "País Valencià")
+#' sel_comarques <- !tesaurus_comarques$icgc_NomCom %in%
+#'   c("Andorra", "Aragó", "Catalunya", "França", "País Valencià")
 #' comarques <- consulta_etiquetes_osm(tesaurus_comarques[sel_comarques, ])
-consulta_etiquetes_osm <- function(x, etiquetes) {
+consulta_etiquetes_osm <- function(x, etiquetes, centre = FALSE) {
   if (!all(c("osm_id", "osm_type") %in% names(x))) {
     stop("Les dades no contenen columnes `osm_type` i `osm_id` que permetin identificar objectes d'OSM.")
   }
 
   x_unic <- unique(x[, c("osm_type", "osm_id")]) # minimitza la consulta
 
-  consulta_osm <- osmdata::opq_osm_id(
+  consulta <- osmdata::opq_osm_id(
     id = x_unic$osm_id,
     type = x_unic$osm_type,
-    out = "tags"
+    out = if (centre) "tags center" else "tags",
+    timeout = 1000
   )
   if (!missing(etiquetes)) {
-    consulta <- osmdata::opq_csv(consulta, fields = c("::id", "::type", etiquetes))
+    if (centre) {
+      camps <- c("::id", "::type", "::lon", "::lat", etiquetes)
+    } else {
+      camps <- c("::id", "::type", etiquetes)
+    }
+    consulta <- osmdata::opq_csv(consulta, fields = camps)
   }
 
-  etiquetes <- osmdata::osmdata_data_frame(consulta_osm)
-  names(etiquetes) <- gsub("^@", "osm_", names(etiquetes)) # per consultes csv, @id -> osm_id i @type -> osm_type
+  etiquetes <- osmdata::osmdata_data_frame(consulta)
+
+  # Per consultes csv, @id -> osm_id, @type -> osm_type
+  names(etiquetes) <- gsub("^@lat", "osm_center_lat", names(etiquetes))
+  names(etiquetes) <- gsub("^@lon", "osm_center_lon", names(etiquetes))
+  names(etiquetes) <- gsub("^@", "osm_", names(etiquetes))
 
 
   columnes_actualitzades <- setdiff(intersect(names(x), names(etiquetes)), c("osm_id", "osm_type"))
