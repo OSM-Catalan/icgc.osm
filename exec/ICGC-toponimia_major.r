@@ -1,15 +1,15 @@
 ## Casa la toponímia major de l'ICGC amb els elements d'OSM
 # https://icgc.cat/Ciutada/Informa-t/Llibres-i-fons-documentals/Llibres-en-PDF/Toponimia/Nomenclator-oficial-de-toponimia-major-de-Catalunya # nolint
 
+library(icgc.osm)
 library(openxlsx)
 library(osmdata)
 library(sf)
 library(pbapply)
 
-d <- read.xlsx("inst/extdata/icgc_nomenclator_2020.xlsx")
-
 
 ## ICGC: Toponímia major ----
+d <- read.xlsx("inst/extdata/icgc_nomenclator_2020.xlsx")
 
 # Naturalitza topònims (mou articles al principi)
 d$`name:icgc` <- sapply(d$Topònim, function(x) {
@@ -40,7 +40,7 @@ c(nrow(d), nrow(unique(d[, setdiff(names(d), "ref:icgc")])))
 dup <- dbTools::duplicatedPK(d[, setdiff(names(d), "ref:icgc")])
 dup <- duplicated(d[, setdiff(names(d), "ref:icgc")])
 table(dup)
-## CONCLUSIÓ: les coordenades combinades amb el topònim no són úniques i hi ha 3 files duplicades
+## CONCLUSIONS: les coordenades combinades amb el topònim no són úniques i hi ha 3 files duplicades
 
 # Elimina files duplicades
 d <- d[!duplicated(d[, setdiff(names(d), "ref:icgc")]), ]
@@ -69,7 +69,7 @@ grep("   vegeu   ", d$Topònim, value = TRUE)
 # normativa.
 
 
-## Combina Municipi.1 i Comarca.1 amb els municipis i comarques d'OSM ----
+### Combina Municipi.1 i Comarca.1 amb els municipis i comarques d'OSM ----
 
 dosm <- merge(
   d,
@@ -99,7 +99,7 @@ dosm <- dosm[, ord]
 no_municipi <- dosm[is.na(dosm$osm_idMun), ]
 no_comarca <- dosm[is.na(dosm$osm_idCom), ]
 no_municipi_ni_comarca <- dosm[is.na(dosm$osm_idMun) & is.na(dosm$osm_idCom), ]
-## CONCLUSIÓ: tots els topònims tenen municipi o comarca, excepte formes no normatives
+## CONCLUSIONS: tots els topònims tenen municipi o comarca, excepte formes no normatives
 
 icgc_toponimiaMajor <- dosm[order(dosm$`ref:icgc`), ]
 rownames(icgc_toponimiaMajor) <- NULL

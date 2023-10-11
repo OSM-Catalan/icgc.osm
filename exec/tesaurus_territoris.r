@@ -314,7 +314,7 @@ municipis_pendents <- municipis[
 ]
 
 
-## Afegeix name d'OSM per les relacions que no són municipis
+### Afegeix name d'OSM per les relacions que no són municipis ----
 consulta_osm_name <- opq_osm_id(
   id = na.omit(municipis$osm_id[is.na(municipis$osm_name)]),
   type = "relation", out = "tags"
@@ -354,7 +354,7 @@ dup <- dbTools::duplicatedPK(municipis, pk = "osm_id")
 
 municipis[apply(municipis, 1, anyNA), ] # municipis sense icgc_CodiMun
 municipis[apply(municipis[, setdiff(names(municipis), "icgc_CodiMun")], 1, anyNA), ]
-# CONCLUSIÓ: afegeix icgc_NomMun pels casos que falten, encara que no existeixin a NGCat (cap clau primària buida)
+# CONCLUSIONS: afegeix icgc_NomMun pels casos que falten, encara que no existeixin a NGCat (cap clau primària buida)
 sel <- apply(municipis[, setdiff(names(municipis), "icgc_CodiMun")], 1, anyNA)
 municipis$icgc_NomMun[sel] <- municipis$icgc_MunicipiTM[sel]
 
