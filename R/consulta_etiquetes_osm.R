@@ -43,7 +43,7 @@ consulta_etiquetes_osm <- function(x, etiquetes, centre = FALSE) {
   names(etiquetes) <- gsub("^@lon", "osm_center_lon", names(etiquetes))
   names(etiquetes) <- gsub("^@", "osm_", names(etiquetes))
 
-  center_cols<- grep("^osm_center_(lat|lon)$", names(etiquetes))
+  center_cols <- grep("^osm_center_(lat|lon)$", names(etiquetes))
   etiquetes[, center_cols] <- lapply(etiquetes[, center_cols], as.numeric) # csv retorna caràcters
 
   columnes_actualitzades <- setdiff(intersect(names(x), names(etiquetes)), c("osm_id", "osm_type"))

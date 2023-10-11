@@ -80,13 +80,15 @@ osm_NGCat <- do.call(dbTools::rbind_addColumns, osm_NGCatL)
 row.names(osm_NGCat) <- NULL
 
 ## Calcula distàncies
-icgc <- st_as_sf(osm_NGCat,
-                 coords = c("UTMX_ETRS89", "UTMY_ETRS89"), remove = FALSE,
-                 crs = sf::st_crs("EPSG:25831")
+icgc <- st_as_sf(
+  osm_NGCat,
+  coords = c("UTMX_ETRS89", "UTMY_ETRS89"), remove = FALSE,
+  crs = sf::st_crs("EPSG:25831")
 ) # ETRS89 UTM fus 31 Nord https://epsg.io/25831
-osm <- st_as_sf(osm_NGCat,
-                coords = c("osm_center_lon", "osm_center_lat"), remove = FALSE,
-                crs = "+proj=longlat +datum=WGS84 +no_defs"
+osm <- st_as_sf(
+  osm_NGCat,
+  coords = c("osm_center_lon", "osm_center_lat"), remove = FALSE,
+  crs = "+proj=longlat +datum=WGS84 +no_defs"
 )
 osm <- st_transform(osm, crs = st_crs(icgc))
 
