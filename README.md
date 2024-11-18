@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# icgc.osm <img src='man/figures/icgc-osm_logo.png' align="right" height=110/>
+# icgc.osm <a href="https://osm-catalan.github.io/icgc.osm"><img src='man/figures/logo.svg' align="right" height=110 alt="Web del projecte"/></a>
 
 <!-- badges: start -->
 
