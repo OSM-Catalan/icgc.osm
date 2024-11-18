@@ -6,3 +6,6 @@
 ^\.lintr$
 ^\.pre-commit-config\.yaml$
 ^inst/WORDLIST$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
