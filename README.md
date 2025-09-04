@@ -7,7 +7,8 @@
 
 [![pre-commit](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/pre-commit.yaml)
 [![R-CMD-check](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/R-CMD-check.yaml)
-[![test-coverage](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/OSM-Catalan/icgc.osm/actions/workflows/test-coverage.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/OSM-Catalan/icgc.osm/graph/badge.svg)](https://app.codecov.io/gh/OSM-Catalan/icgc.osm)
 <!-- badges: end -->
 
 `icgc.osm` és un repositori que serveix per coordinar la col·laboració
