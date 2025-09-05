@@ -5,7 +5,8 @@
 ^\.github$
 ^\.lintr$
 ^\.pre-commit-config\.yaml$
-^inst/WORDLIST$
 ^_pkgdown\.yml$
+^data-raw$
 ^docs$
+^inst/WORDLIST$
 ^pkgdown$
