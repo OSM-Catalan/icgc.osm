@@ -27,7 +27,8 @@ tesaurus_comarques[which(tesaurus_comarques$icgc_nomCom != tesaurus_comarques$os
 }
 \seealso{
 Altres dades:
-\code{\link{tesaurus_municipis}}, \code{\link{icgc_NGCat}}, \code{\link{icgc_toponimiaMajor}}
+\code{\link{tesaurus_municipis}}, \code{\link{icgc_NGCat}}, \code{\link{icgc_toponimiaMajor}},
+\code{\link{tesaurus_iec_paisos}}
 }
 \concept{dades}
 \keyword{datasets}

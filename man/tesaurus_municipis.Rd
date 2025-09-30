@@ -32,7 +32,8 @@ tesaurus_municipis[which(
 }
 \seealso{
 Altres dades:
-\code{\link{tesaurus_comarques}}, \code{\link{icgc_NGCat}}, \code{\link{icgc_toponimiaMajor}}
+\code{\link{tesaurus_comarques}}, \code{\link{icgc_NGCat}}, \code{\link{icgc_toponimiaMajor}},
+\code{\link{tesaurus_iec_paisos}}
 }
 \concept{dades}
 \keyword{datasets}
