@@ -1,7 +1,7 @@
 Type: Package
 Package: icgc.osm
 Title: Col·laboració ICGC & OSM
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     person("Joan", "Maspons", , "joanmaspons@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2286-8727"))
@@ -13,14 +13,19 @@ Depends:
     R (>= 3.5)
 Imports: 
     osmdata (>= 0.2.1)
-Suggests: 
+Suggests:
     dbTools,
+    compareDF,
     httptest2,
+    jsonlite,
+    monitorOSM,
     openxlsx,
     sf,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    usethis
 Remotes: 
-    jmaspons/dbTools
+    jmaspons/dbTools,
+    OSM-Catalan/monitorOSM
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: ca
@@ -28,6 +33,6 @@ LazyData: true
 LazyDataCompression: xz
 License_is_FOSS: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 X-schema.org-keywords: ICGC, Institut Cartogràfic i Geològic de Catalunya,
     open street map, openstreetmap, OSM, topònims, català

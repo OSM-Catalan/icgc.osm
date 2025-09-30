@@ -12,6 +12,7 @@ CC
 character
 ci
 comment
+compareDF
 Config
 Connected
 cre
@@ -43,9 +44,11 @@ https
 httptest
 icgc
 ICGC
+io
 issues
 jmaspons
 joanmaspons
+jsonlite
 l'
 l'ICGC
 l'IEC
@@ -62,6 +65,7 @@ Maintainer
 markdown
 Maspons
 merge
+monitorOSM
 name
 NGCat
 ngcatv
@@ -79,6 +83,7 @@ org-keywords
 osm
 OSM
 OSM-Catalan
+osm-catalan
 osmdata
 Package
 pid
@@ -107,6 +112,7 @@ toponimsCat
 true
 TRUE
 Type
+usethis
 UTF-
 UTMX
 UTMY
@@ -117,3 +123,4 @@ xlsx
 xz
 yes
 Z
+º

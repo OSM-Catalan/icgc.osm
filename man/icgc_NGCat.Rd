@@ -54,7 +54,8 @@ dgeo<- sf::st_as_sf(
 }
 \seealso{
 Altres dades:
-\code{\link{tesaurus_municipis}}, \code{\link{tesaurus_comarques}}, \code{\link{icgc_toponimiaMajor}}
+\code{\link{tesaurus_municipis}}, \code{\link{tesaurus_comarques}}, \code{\link{icgc_toponimiaMajor}},
+\code{\link{iec_nomenclatorMundial}}
 }
 \concept{dades}
 \keyword{datasets}
