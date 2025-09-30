@@ -40,7 +40,7 @@ Les dades estan sota llicència ODbL 1.0 segons l'\href{https://wiki.openstreetm
 \url{https://icgc.cat/Descarregues/Llocs/Noms-geografics-NGCat}
 }
 \references{
-Dades generades a \code{exec/ICGC-NGCat.r}.
+Dades generades a \code{data-raw/ICGC-NGCat.R}.
 }
 \examples{
 # Crea un objecte `sf` amb els punts de les coordenades

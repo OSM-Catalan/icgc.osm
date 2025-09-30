@@ -41,7 +41,7 @@ Les dades estan sota llicència ODbL 1.0 segons l'\href{https://wiki.openstreetm
 \url{https://icgc.cat/Ciutada/Informa-t/Llibres-i-fons-documentals/Llibres-en-PDF/Toponimia/Nomenclator-oficial-de-toponimia-major-de-Catalunya}
 }
 \references{
-Dades generades a \code{exec/ICGC_toponimia_major.r}.
+Dades generades a \code{data-raw/ICGC_toponimia_major.R}.
 }
 \examples{
 # Crea un objecte `sf` amb els punts de les coordenades

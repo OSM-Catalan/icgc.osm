@@ -77,12 +77,12 @@ osm_icgc <- do.call(dbTools::rbind_addColumns, osm_icgcL)
 
 ## Calcula distàncies
 icgc <- st_as_sf(osm_icgc,
-                 coords = c("UTMX", "UTMY"), remove = FALSE,
-                 crs = sf::st_crs("EPSG:25831")
+  coords = c("UTMX", "UTMY"), remove = FALSE,
+  crs = sf::st_crs("EPSG:25831")
 ) # ETRS89 UTM fus 31 Nord https://epsg.io/25831
 osm <- st_as_sf(osm_icgc,
-                coords = c("osm_center_lon", "osm_center_lat"), remove = FALSE,
-                crs = "+proj=longlat +datum=WGS84 +no_defs"
+  coords = c("osm_center_lon", "osm_center_lat"), remove = FALSE,
+  crs = "+proj=longlat +datum=WGS84 +no_defs"
 )
 osm <- st_transform(osm, crs = st_crs(icgc))
 
@@ -97,7 +97,12 @@ selCols <- names(nCols)[nCols > 1000]
 
 head(osm_icgc[, selCols], 15)
 
-openxlsx::write.xlsx(osm_icgc[, selCols], file = "inst/resultats/icgc_toponimiaMajor-OSM_v0.xlsx")
+openxlsx::write.xlsx(
+  osm_icgc[, selCols],
+  file = "inst/resultats/icgc_toponimiaMajor-OSM_v0.xlsx",
+  rowNames = FALSE, borders = "surrounding", colWidths = "auto",
+  firstRow = TRUE, headerStyle = openxlsx::createStyle(textDecoration = "BOLD")
+)
 
 
 ### Coincidències multiples ----

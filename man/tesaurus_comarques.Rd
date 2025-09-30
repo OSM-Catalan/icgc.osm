@@ -5,7 +5,7 @@
 Tesaurus de comarques ICGC - OSM
 }
 \description{
-Dades amb les relacions entre les comarques de l'ICGC i les d'OSM
+Dades amb les correspondències entre les comarques de l'ICGC i les d'OSM.
 }
 \usage{tesaurus_comarques}
 \format{
@@ -19,7 +19,7 @@ Dades amb les relacions entre les comarques de l'ICGC i les d'OSM
   }
 }
 \references{
-Dades generades a \code{exec/tesaurus_territoris.r}.
+Dades generades a \code{data-raw/tesaurus_territoris.R}.
 }
 \examples{
 # Discrepàncies entre l'ICGC i OSM

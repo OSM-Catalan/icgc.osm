@@ -5,7 +5,7 @@
 Tesaurus de municipis ICGC - OSM
 }
 \description{
-Dades amb les relacions entre els municipis de l'ICGC i els d'OSM
+Dades amb les correspondències entre els municipis de l'ICGC i els d'OSM.
 }
 \usage{tesaurus_municipis}
 \format{
@@ -20,7 +20,7 @@ Dades amb les relacions entre els municipis de l'ICGC i els d'OSM
   }
 }
 \references{
-Dades generades a \code{exec/tesaurus_territoris.r}.
+Dades generades a \code{data-raw/tesaurus_territoris.R}.
 }
 \examples{
 # Discrepàncies entre l'ICGC i OSM
