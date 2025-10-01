@@ -51,7 +51,7 @@ jobs:
               next
             }
 
-            filename <- paste(names(d)[i], ".xlsx")
+            filename <- paste0(names(d)[i], ".xlsx")
             message("Writing: ", filename)
             
             write.xlsx(d[[i]],
@@ -71,5 +71,3 @@ jobs:
           *.xlsx
         generate_release_notes: true
         draft: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
