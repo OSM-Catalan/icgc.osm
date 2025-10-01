@@ -10,6 +10,7 @@ dNGCat <- read.csv2("data-raw/ngcatv10cs0f1r011.txt", fileEncoding = "ISO-8859-1
 
 
 ## Tesaurus de comarques ----
+
 comarques_TM <- unique(unlist(dTM[, grep("^Comarca\\.", names(dTM))]))
 comarques_NGCat <- unique(dNGCat[, grep("^(CodiCom|NomCom)", names(dNGCat))])
 comarques_NGCatL <- list()
@@ -24,11 +25,11 @@ names(comarques_icgc) <- paste0("icgc_", names(comarques_icgc))
 
 consulta <- getbb("Catalunya", format_out = "osm_type_id") |>
   opq(osm_types = "relation", out = "tags", timeout = 200) |>
-  opq_csv(fields = c("name", "::type", "::id")) |>
+  opq_csv(fields = c("name", "wikidata", "::type", "::id")) |>
   add_osm_feature(key = "admin_level", value = "7") |>
   add_osm_feature(key = "boundary", value = "administrative")
 comarques_osm <- osmdata_data_frame(consulta)
-names(comarques_osm) <- c("osm_name", "osm_type", "osm_id")
+names(comarques_osm) <- c("osm_name", "wikidata", "osm_type", "osm_id")
 comarques_osm$name <- comarques_osm$osm_name
 
 comarques <- merge(comarques_icgc, comarques_osm, by.x = "icgc_NomCom", by.y = "name", all = TRUE)
@@ -37,9 +38,14 @@ comarques[apply(comarques, 1, anyNA), ]
 # Moianès encara no apareix a NGCat. comarques_NGCat[comarques_NGCat$CodiCom == "SEG",] sense nom
 
 comarques$icgc_CodiCom[comarques$icgc_NomCom == "Moianès"] <- "MOI"
+comarques$icgc_CodiCom[comarques$icgc_NomCom == "la Selva"] <- comarques$icgc_CodiCom[comarques$icgc_NomCom == "Selva"]
+comarques$osm_name[comarques$icgc_NomCom == "Selva"] <- comarques$osm_name[comarques$icgc_NomCom == "la Selva"]
+comarques$wikidata[comarques$icgc_NomCom == "Selva"] <- comarques$wikidata[comarques$icgc_NomCom == "la Selva"]
+comarques$osm_type[comarques$icgc_NomCom == "Selva"] <- comarques$osm_type[comarques$icgc_NomCom == "la Selva"]
+comarques$osm_id[comarques$icgc_NomCom == "Selva"] <- comarques$osm_id[comarques$icgc_NomCom == "la Selva"]
 comarques <- comarques[!comarques$icgc_NomCom %in% c(NA, ""), ] # neteja
 comarques <- comarques[order(comarques$osm_type, comarques$icgc_NomCom), ]
-
+comarques[grep("Selva", comarques$icgc_NomCom), ]
 
 ## Cerca a nominatim (no comarques)
 comarques_pendents <- comarques[is.na(comarques$osm_id), ]
@@ -69,15 +75,22 @@ consulta_osm_name <- opq_osm_id(
   id = comarques$osm_id[comarques$icgc_NomCom %in% comarques_pendents$icgc_NomCom],
   type = "relation", out = "tags"
 ) |>
-  opq_csv(fields = c("name", "::id", "::type"))
+  opq_csv(fields = c("name", "wikidata", "::id", "::type"))
 no_comarques <- osmdata_data_frame(consulta_osm_name)
 
 for (i in seq_len(nrow(no_comarques))) {
   comarques$osm_name[comarques$osm_id %in% no_comarques$`@id`[i]] <- no_comarques$name[i]
+  comarques$wikidata[comarques$osm_id %in% no_comarques$`@id`[i]] <- no_comarques$wikidata[i]
 }
 
 
 comarques[apply(comarques, 1, anyNA), ]
+
+compareDF::view_html(compareDF::compare_df(
+  comarques[, names(tesaurus_comarques)],
+  tesaurus_comarques,
+  group_col = "icgc_NomCom"
+))
 
 tesaurus_comarques <- comarques
 usethis::use_data(tesaurus_comarques, overwrite = TRUE)
@@ -85,6 +98,7 @@ load("data/tesaurus_comarques.rda", verbose = TRUE) # tesaurus_comarques
 
 
 ## Tesaurus de municipis ----
+
 municipis_TM <- unique(unlist(dTM[, grep("^Municipi\\.", names(dTM))]))
 
 ## Elimina asterisc dels municipis amb noms no normatius
@@ -112,13 +126,27 @@ municipis_icgc[] <- lapply(municipis_icgc, function(x) {
 municipis_icgc <- municipis_icgc[!municipis_icgc$icgc_nom %in% c(NA, "82233"), ]
 municipis_icgc[apply(municipis_icgc[, c("icgc_NomMun", "icgc_MunicipiTM")], 1, anyNA), ]
 
+## Clau primària municipis_icgc$icgc_nom
+dup <- dbTools::duplicatedPK(municipis_icgc, pk = "icgc_nom")
+dbTools::lumpDuplicatedByPK(dup, pk = "icgc_nom")
+municipis_icgc <- dbTools::lumpDuplicatedByPK(municipis_icgc, pk = "icgc_nom")
+
+if (is.null(municipis_icgc$dup)) {
+  municipis_icgc <- municipis_icgc$df
+  message("Duplicats suprimits (NAs)")
+} else {
+  stop("Hi ha duplicats a la clau primària municipis_icgc$icgc_nom")
+  print(municipis_icgc$dup)
+}
+
+
 consulta <- getbb("Catalunya", format_out = "osm_type_id") |>
   opq(osm_types = "relation", out = "tags", timeout = 200) |>
-  opq_csv(fields = c("name", "::type", "::id")) |>
+  opq_csv(fields = c("name", "wikidata", "::type", "::id")) |>
   add_osm_feature(key = "admin_level", value = "8") |>
   add_osm_feature(key = "boundary", value = "administrative")
 municipis_osm <- osmdata_data_frame(consulta)
-names(municipis_osm) <- c("osm_name", "osm_type", "osm_id")
+names(municipis_osm) <- c("osm_name", "wikidata", "osm_type", "osm_id")
 municipis_osm$name <- municipis_osm$osm_name
 
 
@@ -134,6 +162,7 @@ municipis[
 
 
 ### Aparella municipis ICGC - OSM ----
+
 municipis_pendents <- municipis[
   apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM", "osm_name")], 1, function(x) all(is.na(x[1:2])) | is.na(x[3])),
 ]
@@ -178,11 +207,12 @@ for (i in seq_along(municipis_per_corregir)) {
 
   municipis[municipis_per_completar, grep("^osm_", names(municipis))] <-
     municipis[municipis$osm_name %in% osm_name, grep("^osm_", names(municipis))]
+  municipis$wikidata[municipis_per_completar] <- unique(na.omit(municipis$wikidata[municipis$osm_name %in% osm_name]))
 
   # Elimina files que només contenen informació del cas per OSM i ja s'han creuat amb files de l'ICGC
   municipis <- municipis[
     !(municipis$osm_name %in% osm_name &
-      apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM")], 1, function(x) all(is.na(x)))),
+      apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM")], 1, function(x) all(is.na(x)))), # nolint
   ]
 }
 
@@ -234,10 +264,13 @@ for (i in seq_along(municipis_per_corregir)) {
   }
   municipis[municipis_per_completar, grep("^osm_", names(municipis))] <-
     municipis[municipis$osm_name %in% osm_name, grep("^osm_", names(municipis))]
+  municipis$wikidata[municipis_per_completar] <- unique(na.omit(municipis$wikidata[municipis$osm_name %in% osm_name]))
 
   # Elimina files que només contenen informació del cas per OSM i ja s'han creuat amb files de l'ICGC
-  municipis <- municipis[!(municipis$osm_name %in% osm_name &
-    apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM")], 1, function(x) all(is.na(x)))), ]
+  municipis <- municipis[
+    !(municipis$osm_name %in% osm_name &
+      apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM")], 1, function(x) all(is.na(x)))), # nolint
+  ]
 }
 
 municipis_pendents <- municipis[
@@ -246,6 +279,7 @@ municipis_pendents <- municipis[
 
 
 ### Correccions manuals ----
+
 regex_municipis_pendents <- paste0("(", paste(municipis_pendents$nom, collapse = "|"), ")")
 municipis[grep(regex_municipis_pendents, municipis$nom, ignore.case = TRUE), ]
 municipis[agrep(regex_municipis_pendents, municipis$nom, max.distance = .01, ignore.case = TRUE, fixed = FALSE), ]
@@ -284,6 +318,7 @@ municipis[municipis$icgc_NomMun %in% "Calonge", grep("^osm_", names(municipis))]
 municipis[municipis$icgc_NomMun %in% "Santa Maria de Corcó", grep("^osm_", names(municipis))] <-
   municipis[municipis$osm_name %in% "l'Esquirol", grep("^osm_", names(municipis))]
 
+
 municipis_pendents <- municipis[
   apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM", "osm_name")], 1, function(x) all(is.na(x[1:2])) | is.na(x[3])),
 ]
@@ -315,54 +350,111 @@ municipis_pendents <- municipis[
 
 
 ### Afegeix name d'OSM per les relacions que no són municipis ----
+
 consulta_osm_name <- opq_osm_id(
   id = na.omit(municipis$osm_id[is.na(municipis$osm_name)]),
   type = "relation", out = "tags"
 ) |>
-  opq_csv(fields = c("name", "::id", "::type"))
+  opq_csv(fields = c("name", "wikidata", "::id", "::type"))
 no_municipis <- osmdata_data_frame(consulta_osm_name)
 
 for (i in seq_len(nrow(no_municipis))) {
   municipis$osm_name[municipis$osm_id %in% no_municipis$`@id`[i]] <- no_municipis$name[i]
+  municipis$wikidata[municipis$osm_id %in% no_municipis$`@id`[i]] <- no_municipis$wikidata[i]
 }
 
 municipis[
   apply(municipis[, c("icgc_NomMun", "icgc_MunicipiTM", "osm_name")], 1, function(x) all(is.na(x[1:2])) | is.na(x[3])),
 ]
 
+## Afegeix dades d'OSM al antic nom de Castell d'Aro, Platja d'Aro i s'Agaró
+municipis$icgc_CodiMun[municipis$nom == "Castell d'Aro, Platja d'Aro i s'Agaró"] <-
+  municipis$icgc_CodiMun[municipis$nom == "Castell-Platja d'Aro"]
+municipis[municipis$nom == "Castell-Platja d'Aro", c("osm_name", "wikidata", "osm_type", "osm_id")] <-
+  municipis[municipis$nom == "Castell d'Aro, Platja d'Aro i s'Agaró", c("osm_name", "wikidata", "osm_type", "osm_id")]
+
+
+### Complementa wikidata buit de les complecions manuals ----
+
+no_wikidata <- municipis[is.na(municipis$wikidata), ]
+for (i in seq_len(nrow(no_wikidata))) {
+  muns <- municipis[municipis$osm_id == no_wikidata$osm_id[i], ]
+
+  if (nrow(muns) < 2) next
+
+  municipis$wikidata[municipis$osm_id == no_wikidata$osm_id[i] & is.na(municipis$wikidata)] <-
+    unique(na.omit(muns$wikidata))
+}
+municipis[is.na(municipis$wikidata), ]
+
 
 ### Combina NGCat i toponímia major ----
+
 # Evita la multiplicació de files per cross join amb NAs
 
-municipis <- merge(
+municipis0 <- merge(
   unique(municipis[
     apply(municipis[, c("icgc_CodiMun", "icgc_NomMun")], 1, function(x) !all(is.na(x))),
-    c("icgc_CodiMun", "icgc_NomMun", "osm_name", "osm_type", "osm_id")
+    c("icgc_CodiMun", "icgc_NomMun", "osm_name", "wikidata", "osm_type", "osm_id")
   ]),
   unique(municipis[
     !is.na(municipis$icgc_MunicipiTM),
-    c("icgc_MunicipiTM", "osm_name", "osm_type", "osm_id")
+    c("icgc_MunicipiTM", "osm_name", "wikidata", "osm_type", "osm_id")
   ]),
   all = TRUE
 )
-# ALERTA: desapareix el Medinyà com a municipi present només a OSM (https://ca.wikipedia.org/wiki/Mediny%C3%A0)
 
 # ordena i elimina columna nom
-municipis <- municipis[, c("icgc_CodiMun", "icgc_NomMun", "icgc_MunicipiTM", "osm_name", "osm_id", "osm_type")]
+cols <- c("icgc_CodiMun", "icgc_NomMun", "icgc_MunicipiTM", "osm_name", "wikidata", "osm_id", "osm_type")
+municipis <- municipis[, cols]
+municipis0 <- municipis0[, cols]
 
-dup <- dbTools::duplicatedPK(municipis, pk = "osm_id")
-
+compareDF::view_html(compareDF::compare_df(
+  df_new = municipis0, df_old = municipis, group_col = "osm_id"
+))
+dbTools::duplicatedPK(municipis, pk = "osm_id")
+dbTools::duplicatedPK(municipis0, pk = "osm_id")
 municipis[apply(municipis, 1, anyNA), ] # municipis sense icgc_CodiMun
+municipis0[apply(municipis0, 1, anyNA), ] # municipis sense icgc_CodiMun
 municipis[apply(municipis[, setdiff(names(municipis), "icgc_CodiMun")], 1, anyNA), ]
+municipis0[apply(municipis0[, setdiff(names(municipis0), "icgc_CodiMun")], 1, anyNA), ]
+
+setdiff(municipis_icgc$icgc_NomMun, municipis0$icgc_NomMun)
+setdiff(municipis_icgc$icgc_MunicipiTM, municipis0$icgc_MunicipiTM)
+setdiff(municipis_icgc$icgc_CodiMun, municipis0$icgc_CodiMun)
+
+setdiff(municipis_icgc$icgc_NomMun, municipis$icgc_NomMun)
+setdiff(municipis_icgc$icgc_MunicipiTM, municipis$icgc_MunicipiTM)
+setdiff(municipis_icgc$icgc_CodiMun, municipis$icgc_CodiMun)
+
+municipis <- municipis0
+
+
 # CONCLUSIONS: afegeix icgc_NomMun pels casos que falten, encara que no existeixin a NGCat (cap clau primària buida)
 sel <- apply(municipis[, setdiff(names(municipis), "icgc_CodiMun")], 1, anyNA)
+municipis[sel, ]
 municipis$icgc_NomMun[sel] <- municipis$icgc_MunicipiTM[sel]
+grepv("\\*", municipis$icgc_NomMun)
+grepv("\\*", municipis$icgc_MunicipiTM)
+municipis$icgc_NomMun <- gsub(" \\*", "", municipis$icgc_NomMun)
 
-tesaurus_municipis <- rbind(
+tesaurus_municipis0 <- rbind(
   municipis[!municipis$osm_id %in% no_municipis$`@id`, ],
   municipis[municipis$osm_id %in% no_municipis$`@id`, ]
 )
 
+tesaurus_municipis0[apply(tesaurus_municipis0, 1, function(x) any(is.na(x))), ]
+
+compareDF::view_html(comp <- compareDF::compare_df(
+  df_new = tesaurus_municipis0[, names(icgc.osm::tesaurus_municipis)],
+  df_old = icgc.osm::tesaurus_municipis,
+  group_col = "osm_id"
+))
+table(trobat <- comp$comparison_df$osm_id %in% tesaurus_municipis0$osm_id)
+comp$comparison_df[!trobat, ]
+
+
+tesaurus_municipis <- tesaurus_municipis0
 usethis::use_data(tesaurus_municipis, overwrite = TRUE)
 load("data/tesaurus_municipis.rda", verbose = TRUE) # tesaurus_municipis
 
