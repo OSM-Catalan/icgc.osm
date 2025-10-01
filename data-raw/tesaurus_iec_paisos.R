@@ -111,13 +111,15 @@ split(
 # Selecciona països correctes de nominatim
 paisos_nominatim <- paisos_nominatim0[paisos_nominatim0$addresstype %in% c(
   "administrative", # OK: Sàhara Occidental -> relation 2559126
-  "archipelago", # OK: illes Australs -> rel 16111361; illes Pitcairn -> rel 2185375; Nova Caledònia -> rel 3407643
+  "archipelago", # OK: illes Australs -> rel 16111361; illes Òrcades Australs -> rel 938061;
+  # illes Pitcairn -> rel 2185375; illes Salomó -> rel 9526687; illes Shetland del Sud -> rel938065;
+  # Nova Caledònia -> rel 3407643
   "country", "continent", # OK
   "county", # OK: illa Bouvet -> relation 2425963
   # "lake", # INCORRECTE: les TAAF (Terres Australs Antàrtiques Franceses) -> relation 2186658
   "municipality", # OK: illes Éparses -> relation 6063099
   "region", # OK: illa de l'Ascensió -> 156166; INCORRECTE: Svalbard i Jan Mayen -> relation 3245620
-  "state", # OK, excepte la Reunió -> relation 1785276
+  "state", # OK, excepte INCORRECTE: la Reunió -> relation 1785276
   "territory" # OK
 ), ]
 ## Elimina casos erronis
@@ -147,6 +149,9 @@ paisos_nominatim_candidats$Aruba <- paisos_nominatim_candidats$Aruba[
 paisos_nominatim_candidats$Clipperton <- paisos_nominatim_candidats$Clipperton[
   paisos_nominatim_candidats$Clipperton$osm_id == "2573009",
 ]
+paisos_nominatim_candidats$`Estats Units` <- paisos_nominatim_candidats$`Estats Units`[
+  paisos_nominatim_candidats$`Estats Units`$osm_id == "148838",
+]
 paisos_nominatim_candidats$Guadalupe <- paisos_nominatim_candidats$Guadalupe[
   paisos_nominatim_candidats$Guadalupe$osm_id == "1401835",
 ]
@@ -155,9 +160,6 @@ paisos_nominatim_candidats$`Guaiana Francesa` <- paisos_nominatim_candidats$`Gua
 ]
 paisos_nominatim_candidats$Guam <- paisos_nominatim_candidats$Guam[
   paisos_nominatim_candidats$Guam$osm_id == "306001",
-]
-paisos_nominatim_candidats$`illa de l'Ascensió` <- paisos_nominatim_candidats$`illa de l'Ascensió`[
-  paisos_nominatim_candidats$`illa de l'Ascensió`$osm_id == "156166",
 ]
 paisos_nominatim_candidats$`illa de Man` <- paisos_nominatim_candidats$`illa de Man`[
   paisos_nominatim_candidats$`illa de Man`$osm_id == "62269",
@@ -173,13 +175,9 @@ paisos_nominatim_candidats$`illes Fèroe` <- paisos_nominatim_candidats$`illes F
 paisos_nominatim_candidats$`la Reunió` <- paisos_nominatim_candidats$`la Reunió`[
   paisos_nominatim_candidats$`la Reunió`$osm_id == "1785276", ## No trobat
 ]
-## NO TROBAT: illes Salomó -> rel 9526687
-paisos_nominatim_candidats$`illes Salomó` <- paisos_nominatim_candidats$`illes Salomó`[
-  paisos_nominatim_candidats$`illes Salomó`$osm_id == "9526687", ## No trobat
-]
 ## NO TROBAT:
 paisos_nominatim_candidats$`les TAAF (Terres Australs Antàrtiques Franceses)` <-
-  paisos_nominatim_candidats$`illes Salomó`[
+  paisos_nominatim_candidats$`les TAAF (Terres Australs Antàrtiques Franceses)`[
     paisos_nominatim_candidats$`les TAAF (Terres Australs Antàrtiques Franceses)`$osm_id == "2186658", ## No trobat
   ]
 paisos_nominatim_candidats$Martinica <- paisos_nominatim_candidats$Martinica[
@@ -212,6 +210,8 @@ paisos_nominatim_candidats$`Xina - Hong Kong` <- paisos_nominatim_candidats$`Xin
   paisos_nominatim_candidats$`Xina - Hong Kong`$osm_id == "913110",
 ]
 
+names(paisos_nominatim_candidats[sapply(paisos_nominatim_candidats, function(x) is.null(x) || nrow(x) == 0)])
+
 
 ### Cerca manual ----
 names(paisos_nominatim_candidats[sapply(paisos_nominatim_candidats, nrow) != 1])
@@ -222,10 +222,6 @@ paisos_nominatim_candidats$`illes Cocos (Keeling)` <- osmdata::getbb(
 )
 paisos_nominatim_candidats$`illes Cocos (Keeling)` <- paisos_nominatim_candidats$`illes Cocos (Keeling)`[
   paisos_nominatim_candidats$`illes Cocos (Keeling)`$osm_id == "82636",
-]
-paisos_nominatim_candidats$`illes Salomó` <- osmdata::getbb("Salomon Islands", format_out = "data.frame")
-paisos_nominatim_candidats$`illes Salomó` <- paisos_nominatim_candidats$`illes Salomó`[
-  paisos_nominatim_candidats$`illes Salomó`$osm_id == "9526687",
 ]
 paisos_nominatim_candidats$`la Reunió` <- osmdata::getbb(
   "illa de la Reunió",
@@ -268,6 +264,7 @@ paisos_nominatim_error <- lapply(paisos_pendents_error, function(x) {
   x <- gsub("^illes Òrcades Australs$", "South Orkney Islands", x)
   x <- gsub("^illes Verges dels Estats Units$", "United States Virgin Islands", x)
   x <- gsub("^illes Heard i McDonald$", "Heard Island and McDonald Islands", x)
+  x <- gsub("^illes Tristan da Cunha$", "Tristan da Cunha", x)
   x <- gsub("^[iI]lles", "islands", x)
 
   osmdata::getbb(x, format_out = "data.frame")
@@ -277,34 +274,21 @@ names(paisos_nominatim_error) <- paisos_pendents_error
 paisos_nominatim_error$`Antilles Neerlandeses` <- paisos_nominatim_error$`Antilles Neerlandeses`[
   paisos_nominatim_error$`Antilles Neerlandeses`$osm_id == "1216720",
 ]
-paisos_nominatim_error$`illes Heard i McDonald` <- paisos_nominatim_error$`illes Heard i McDonald`[
-  paisos_nominatim_error$`illes Heard i McDonald`$osm_id == "2177227",
-]
-paisos_nominatim_error$`illes Marianes del Nord` <- paisos_nominatim_error$`illes Marianes del Nord`[
-  paisos_nominatim_error$`illes Marianes del Nord`$osm_id == "306004",
-]
 paisos_nominatim_error$`Illes Menors Allunyades dels Estats Units` <-
   paisos_nominatim_error$`Illes Menors Allunyades dels Estats Units`[
     paisos_nominatim_error$`Illes Menors Allunyades dels Estats Units`$osm_id == "2185386",
   ]
-paisos_nominatim_error$`illes Òrcades Australs` <- paisos_nominatim_error$`illes Òrcades Australs`[
-  paisos_nominatim_error$`illes Òrcades Australs`$osm_id == "938061",
-]
-paisos_nominatim_error$`illes Shetland del Sud` <- paisos_nominatim_error$`illes Shetland del Sud`[
-  paisos_nominatim_error$`illes Shetland del Sud`$osm_id == "938065",
-]
 paisos_nominatim_error$`illes Tokelau` <- paisos_nominatim_error$`illes Tokelau`[
   paisos_nominatim_error$`illes Tokelau`$osm_id == "2186600",
 ]
 paisos_nominatim_error$`illes Tristan da Cunha` <- paisos_nominatim_error$`illes Tristan da Cunha`[
-  paisos_nominatim_error$`illes Tristan da Cunha`$osm_id == "3672300",
-]
-paisos_nominatim_error$`illes Verges dels Estats Units` <- paisos_nominatim_error$`illes Verges dels Estats Units`[
-  paisos_nominatim_error$`illes Verges dels Estats Units`$osm_id == "286898",
+  paisos_nominatim_error$`illes Tristan da Cunha`$osm_id == "3672278",
 ]
 paisos_nominatim_error$Kirguizstan <- paisos_nominatim_error$Kirguizstan[
   paisos_nominatim_error$Kirguizstan$osm_id == "178009",
 ]
+
+
 table(sapply(paisos_nominatim_error, nrow))
 
 
@@ -381,16 +365,17 @@ all(rownames(icgc.osm::tesaurus_iec_paisos$iec_nom) %in% paisos_iec$iec_nom)
 tesaurus_iec_paisos[is.na(tesaurus_iec_paisos$`name:ca`), ]
 tesaurus_iec_paisos[!tesaurus_iec_paisos$osm_id %in% monitorOSM::estats$osm_id, ]
 
+sel_cols <- c("iec_nom", "iec_pais", "name:ca", "name", "wikidata", "osm_type", "osm_id")
+tesaurus_iec_paisos <- tesaurus_iec_paisos[, sel_cols]
+
 cols <- c("osm_id", setdiff(names(tesaurus_iec_paisos), "osm_id"))
 diferencies <- compareDF::compare_df(
-  tesaurus_iec_paisos[, cols],
-  icgc.osm::tesaurus_iec_paisos[, cols],
+  df_new = tesaurus_iec_paisos[, cols],
+  df_old = icgc.osm::tesaurus_iec_paisos[, cols],
   group_col = "iec_nom"
 )
 compareDF::view_html(diferencies)
 
-sel_cols <- c("iec_nom", "iec_pais", "name:ca", "name", "wikidata", "osm_type", "osm_id")
-tesaurus_iec_paisos <- tesaurus_iec_paisos[, sel_cols]
 usethis::use_data(tesaurus_iec_paisos, overwrite = TRUE)
 load("data/tesaurus_iec_paisos.rda", verbose = TRUE) # tesaurus_iec_paisos
 
@@ -426,7 +411,7 @@ comprova_admin_level[, sel_etiquetes]
 comprova_boundary <- paisos_etiquetes_osm[!paisos_etiquetes_osm$boundary %in% c("administrative", "continent"), ]
 comprova_boundary[, sel_etiquetes]
 tesaurus_iec_paisos[tesaurus_iec_paisos$osm_id %in% comprova_boundary$osm_id, ]
-## CONCLUSIONS: Antilles Neerlandeses -> rel 1216720. Illa Bouvet -> rel 2425963. CORREGIT
+## CONCLUSIONS: CORREGIT Antilles Neerlandeses -> rel 1216720; Illa Bouvet -> rel 2425963.
 # Per Illes Salomó no tenen relació millor amb boundary o admin_level
 
 comprova_ISO3166 <- paisos_etiquetes_osm[is.na(paisos_etiquetes_osm$`ISO3166-1`), ]
