@@ -33,6 +33,6 @@ LazyData: true
 LazyDataCompression: xz
 License_is_FOSS: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 X-schema.org-keywords: ICGC, Institut Cartogràfic i Geològic de Catalunya,
     open street map, openstreetmap, OSM, topònims, català
