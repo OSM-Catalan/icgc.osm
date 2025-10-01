@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">icgc.osm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,9 @@
     <dt><code>osm_name</code></dt>
 <dd><p>Nom de dels municipis a OSM.</p></dd>
 
+    <dt><code>wikidata</code></dt>
+<dd><p>Etiqueta wikidata de l'element d'OSM.</p></dd>
+
     <dt><code>osm_type</code></dt>
 <dd><p>Tipus de l'element corresponent a OSM.</p></dd>
 
@@ -80,153 +83,135 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>     icgc_CodiMun              icgc_NomMun          icgc_MunicipiTM</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106        80235          Bigues i Riells          Bigues i Riells</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 123       170280                 Brunyola                 Brunyola</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127       430350                  Cabacés                Cabacés *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 145       170340                  Calonge    Calonge i Sant Antoni</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146       170340                  Calonge                  Calonge</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 155       170427                  Capmany                Capmany *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 248        81347          Figaró-Montmany        Figaró-Montmany *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284       250576                Es Bòrdes                Es Bòrdes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 386        82541     Santa Maria de Corcó               l'Esquirol</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 407       259031      la Guingueta d'Àneu      la Guingueta d'Àneu</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 428       431362 Sant Carles de la Ràpita Sant Carles de la Ràpita</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 476       170887                    Lladó                  Lladó *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 490       171019                 Massanes               Massanes *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660       251832                    Rialp                  Rialp *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 679       431310             Roda de Barà             Roda de Berà</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 923       252430         Vielha e MIjaran         Vielha e Mijaran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 924       252430         Vielha e MIjaran         Vielha e MIjaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144       170340                  Calonge    Calonge i Sant Antoni</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145       170340                  Calonge                  Calonge</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173       170486     Castell-Platja d'Aro   Castell-Platja d'Aro *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174       170486     Castell-Platja d'Aro   Castell-Platja d'Aro *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 384        82541     Santa Maria de Corcó               l'Esquirol</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 389       430271      la Bisbal de Falset      la Bisbal de Falset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 426       431362 Sant Carles de la Ràpita Sant Carles de la Ràpita</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 502       171002                  Masarac                  Masarac</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 668       431310             Roda de Barà             Roda de Berà</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 907       252430         Vielha e MIjaran         Vielha e Mijaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 908       252430         Vielha e MIjaran         Vielha e MIjaran</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 47            NA                    Aragó                    Aragó</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 220           NA            País Valencià            País Valencià</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 318           NA                   França                   França</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          osm_name  osm_id osm_type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 106       Bigues i Riells del Fai  343712 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 123 Brunyola i Sant Martí Sapresa  348895 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127                     Cabassers  346547 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 145         Calonge i Sant Antoni  344130 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146         Calonge i Sant Antoni  344130 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 155                      Campmany  347516 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 248         el Figueró i Montmany  344956 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284                     es Bòrdes  344256 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 386                    l'Esquirol  339488 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 407           La Guingueta d'Àneu  341315 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 428                     la Ràpita  345495 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 476                         Lledó  340350 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 490                       Maçanes  341141 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660                         Rialb  344946 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 679                  Roda de Berà  345490 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 923              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 924              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47                         Aragón  349045 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 220          Comunitat Valenciana  349043 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 318         France métropolitaine 1403916 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                  osm_name wikidata  osm_id osm_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106               Bigues i Riells del Fai   Q15398  343712 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123         Brunyola i Sant Martí Sapresa   Q13056  348895 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144                 Calonge i Sant Antoni   Q13459  344130 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145                 Calonge i Sant Antoni   Q13459  344130 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 Castell d'Aro, Platja d'Aro i s'Agaró   Q13467  347518 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 Castell d'Aro, Platja d'Aro i s'Agaró   Q13467  347518 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 384                            l'Esquirol   Q13837  339488 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 389                 la Bisbal de Montsant  Q651003  342340 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 426                             la Ràpita  Q767011  345495 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 502                  Masarac i Vilarnadal   Q11347  341140 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 668                          Roda de Berà Q1229622  345490 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 907                      Vielha e Mijaran   Q12647  347881 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 908                      Vielha e Mijaran   Q12647  347881 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                                 Aragón    Q4040  349045 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220                  Comunitat Valenciana    Q5720  349043 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318                 France métropolitaine  Q212429 1403916 relation</span>
 <span class="r-in"><span><span class="va">tesaurus_municipis</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">tesaurus_municipis</span><span class="op">$</span><span class="va">icgc_MunicipiTM</span> <span class="op">!=</span> <span class="va">tesaurus_municipis</span><span class="op">$</span><span class="va">osm_name</span><span class="op">)</span>, <span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     icgc_CodiMun                   icgc_NomMun               icgc_MunicipiTM</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106        80235               Bigues i Riells               Bigues i Riells</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 123       170280                      Brunyola                      Brunyola</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127       430350                       Cabacés                     Cabacés *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146       170340                       Calonge                       Calonge</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 155       170427                       Capmany                     Capmany *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 176       170486          Castell-Platja d'Aro        Castell-Platja d'Aro *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 248        81347               Figaró-Montmany             Figaró-Montmany *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 282        81705              els Prats de Rei             els Prats del Rei</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284       250576                     Es Bòrdes                     Es Bòrdes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124       430350                       Cabacés                     Cabacés *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145       170340                       Calonge                       Calonge</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165       170427                       Capmany                     Capmany *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173       170486          Castell-Platja d'Aro        Castell-Platja d'Aro *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174       170486          Castell-Platja d'Aro        Castell-Platja d'Aro *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281        81705              els Prats de Rei             els Prats del Rei</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 296        81347               Figaró-Montmany             Figaró-Montmany *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 314       179026                      Forallac                    Forallac *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 405       251018                 la Granadella                 la Garnadella</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 407       259031           la Guingueta d'Àneu           la Guingueta d'Àneu</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 428       431362      Sant Carles de la Ràpita      Sant Carles de la Ràpita</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 461       431055                     les Piles             les Piles de Gaià</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 476       170887                         Lladó                       Lladó *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 490       171019                      Massanes                    Massanes *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 535       430923            Mont-roig del Camp           Mont-roig del camp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 563        81419                         Navàs                       Navàs *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660       251832                         Rialp                       Rialp *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 747       179032 Sant Julià del Llor i Bonmatí Sant Lulià del Llor i Bonmatí</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 875        82877                    Torrelavit                  Torrelavit *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 920           NA              Vielha e Mijaran              Vielha e MIjaran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 922       252430              Vielha e Mijaran              Vielha e MIjaran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 924       252430              Vielha e MIjaran              Vielha e MIjaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 389       430271           la Bisbal de Falset           la Bisbal de Falset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 403       251018                 la Granadella                 la Garnadella</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 426       431362      Sant Carles de la Ràpita      Sant Carles de la Ràpita</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 458       431055                     les Piles             les Piles de Gaià</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 464       170887                         Lladó                       Lladó *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 502       171002                       Masarac                       Masarac</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 508       171019                      Massanes                    Massanes *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 529       430923            Mont-roig del Camp           Mont-roig del camp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 556        81419                         Navàs                       Navàs *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 650       251832                         Rialp                       Rialp *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 736       179032 Sant Julià del Llor i Bonmatí Sant Lulià del Llor i Bonmatí</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 861        82877                    Torrelavit                  Torrelavit *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 906       252430              Vielha e Mijaran              Vielha e MIjaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 908       252430              Vielha e MIjaran              Vielha e MIjaran</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 47            NA                         Aragó                         Aragó</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 220           NA                 País Valencià                 País Valencià</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 318           NA                        França                        França</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          osm_name  osm_id osm_type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 106       Bigues i Riells del Fai  343712 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 123 Brunyola i Sant Martí Sapresa  348895 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127                     Cabassers  346547 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146         Calonge i Sant Antoni  344130 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 155                      Campmany  347516 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 176          Castell-Platja d'Aro  347518 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 248         el Figueró i Montmany  344956 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 282              els Prats de Rei  341047 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284                     es Bòrdes  344256 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 314                      Forallac  341396 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 405                 la Granadella  346073 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 407           La Guingueta d'Àneu  341315 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 428                     la Ràpita  345495 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 461                     les Piles  340534 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 476                         Lledó  340350 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 490                       Maçanes  341141 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 535            Mont-roig del Camp  348138 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 563                         Navàs  346000 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660                         Rialb  344946 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 747 Sant Julià del Llor i Bonmatí  341397 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 875                    Torrelavit  346131 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 920              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 922              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 924              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47                         Aragón  349045 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 220          Comunitat Valenciana  349043 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 318         France métropolitaine 1403916 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                  osm_name wikidata  osm_id osm_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106               Bigues i Riells del Fai   Q15398  343712 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123         Brunyola i Sant Martí Sapresa   Q13056  348895 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124                               Cabacés Q1248525  346547 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145                 Calonge i Sant Antoni   Q13459  344130 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165                               Capmany    Q7106  347516 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 Castell d'Aro, Platja d'Aro i s'Agaró   Q13467  347518 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 Castell d'Aro, Platja d'Aro i s'Agaró   Q13467  347518 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281                      els Prats de Rei   Q15961  341047 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 296                       Figaró-Montmany   Q15409  344956 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 314                              Forallac   Q13475  341396 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 389                 la Bisbal de Montsant  Q651003  342340 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 403                         la Granadella Q1902138  346073 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 426                             la Ràpita  Q767011  345495 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 458                             les Piles Q1248557  340534 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 464                                 Lladó   Q11334  340350 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 502                  Masarac i Vilarnadal   Q11347  341140 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 508                              Massanes   Q13637  341141 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 529                    Mont-roig del Camp  Q929794  348138 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 556                                 Navàs   Q16724  346000 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 650                                 Rialp   Q12686  344946 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 736         Sant Julià del Llor i Bonmatí   Q13640  341397 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 861                            Torrelavit Q1228768  346131 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 906                      Vielha e Mijaran   Q12647  347881 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 908                      Vielha e Mijaran   Q12647  347881 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                                 Aragón    Q4040  349045 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220                  Comunitat Valenciana    Q5720  349043 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318                 France métropolitaine  Q212429 1403916 relation</span>
 <span class="r-in"><span><span class="va">tesaurus_municipis</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">" \\*"</span>, <span class="st">""</span>, <span class="va">tesaurus_municipis</span><span class="op">$</span><span class="va">icgc_MunicipiTM</span><span class="op">)</span> <span class="op">!=</span> <span class="va">tesaurus_municipis</span><span class="op">$</span><span class="va">osm_name</span></span></span>
 <span class="r-in"><span><span class="op">)</span>, <span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     icgc_CodiMun                   icgc_NomMun               icgc_MunicipiTM</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 106        80235               Bigues i Riells               Bigues i Riells</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 123       170280                      Brunyola                      Brunyola</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127       430350                       Cabacés                     Cabacés *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146       170340                       Calonge                       Calonge</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 155       170427                       Capmany                     Capmany *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 248        81347               Figaró-Montmany             Figaró-Montmany *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 282        81705              els Prats de Rei             els Prats del Rei</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284       250576                     Es Bòrdes                     Es Bòrdes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 405       251018                 la Granadella                 la Garnadella</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 407       259031           la Guingueta d'Àneu           la Guingueta d'Àneu</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 428       431362      Sant Carles de la Ràpita      Sant Carles de la Ràpita</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 461       431055                     les Piles             les Piles de Gaià</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 476       170887                         Lladó                       Lladó *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 490       171019                      Massanes                    Massanes *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 535       430923            Mont-roig del Camp           Mont-roig del camp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660       251832                         Rialp                       Rialp *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 747       179032 Sant Julià del Llor i Bonmatí Sant Lulià del Llor i Bonmatí</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 920           NA              Vielha e Mijaran              Vielha e MIjaran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 922       252430              Vielha e Mijaran              Vielha e MIjaran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 924       252430              Vielha e MIjaran              Vielha e MIjaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145       170340                       Calonge                       Calonge</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173       170486          Castell-Platja d'Aro        Castell-Platja d'Aro *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174       170486          Castell-Platja d'Aro        Castell-Platja d'Aro *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281        81705              els Prats de Rei             els Prats del Rei</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 389       430271           la Bisbal de Falset           la Bisbal de Falset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 403       251018                 la Granadella                 la Garnadella</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 426       431362      Sant Carles de la Ràpita      Sant Carles de la Ràpita</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 458       431055                     les Piles             les Piles de Gaià</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 502       171002                       Masarac                       Masarac</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 529       430923            Mont-roig del Camp           Mont-roig del camp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 736       179032 Sant Julià del Llor i Bonmatí Sant Lulià del Llor i Bonmatí</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 906       252430              Vielha e Mijaran              Vielha e MIjaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 908       252430              Vielha e MIjaran              Vielha e MIjaran</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 47            NA                         Aragó                         Aragó</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 220           NA                 País Valencià                 País Valencià</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 318           NA                        França                        França</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          osm_name  osm_id osm_type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 106       Bigues i Riells del Fai  343712 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 123 Brunyola i Sant Martí Sapresa  348895 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 127                     Cabassers  346547 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 146         Calonge i Sant Antoni  344130 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 155                      Campmany  347516 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 248         el Figueró i Montmany  344956 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 282              els Prats de Rei  341047 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 284                     es Bòrdes  344256 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 405                 la Granadella  346073 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 407           La Guingueta d'Àneu  341315 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 428                     la Ràpita  345495 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 461                     les Piles  340534 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 476                         Lledó  340350 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 490                       Maçanes  341141 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 535            Mont-roig del Camp  348138 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660                         Rialb  344946 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 747 Sant Julià del Llor i Bonmatí  341397 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 920              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 922              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 924              Vielha e Mijaran  347881 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47                         Aragón  349045 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 220          Comunitat Valenciana  349043 relation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 318         France métropolitaine 1403916 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                  osm_name wikidata  osm_id osm_type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106               Bigues i Riells del Fai   Q15398  343712 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123         Brunyola i Sant Martí Sapresa   Q13056  348895 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145                 Calonge i Sant Antoni   Q13459  344130 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 Castell d'Aro, Platja d'Aro i s'Agaró   Q13467  347518 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 Castell d'Aro, Platja d'Aro i s'Agaró   Q13467  347518 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281                      els Prats de Rei   Q15961  341047 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 389                 la Bisbal de Montsant  Q651003  342340 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 403                         la Granadella Q1902138  346073 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 426                             la Ràpita  Q767011  345495 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 458                             les Piles Q1248557  340534 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 502                  Masarac i Vilarnadal   Q11347  341140 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 529                    Mont-roig del Camp  Q929794  348138 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 736         Sant Julià del Llor i Bonmatí   Q13640  341397 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 906                      Vielha e Mijaran   Q12647  347881 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 908                      Vielha e Mijaran   Q12647  347881 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47                                 Aragón    Q4040  349045 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220                  Comunitat Valenciana    Q5720  349043 relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 318                 France métropolitaine  Q212429 1403916 relation</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
