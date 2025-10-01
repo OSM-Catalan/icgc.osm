@@ -15,6 +15,7 @@ Dades amb les correspondències entre els municipis de l'ICGC i els d'OSM.
     \item{\code{icgc_CodiMun}}{Codi dels municipis segons els camps \code{CodiMun*} d'\code{\link{icgc_NGCat}}.}
     \item{\code{icgc_MunicipiTM}}{Nom dels municipis segons els camps \code{Municipi.*} d'\code{\link{icgc_toponimiaMajor}}.}
     \item{\code{osm_name}}{Nom de dels municipis a OSM.}
+    \item{\code{wikidata}}{Etiqueta wikidata de l'element d'OSM.}
     \item{\code{osm_type}}{Tipus de l'element corresponent a OSM.}
     \item{\code{osm_id}}{Identificador de l'element corresponent a OSM.}
   }

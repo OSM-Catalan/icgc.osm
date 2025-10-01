@@ -14,6 +14,7 @@ Dades amb les correspondències entre les comarques de l'ICGC i les d'OSM.
     \item{\code{icgc_NomCom}}{Nom de les comarques segons els camps \code{NomCom*} d'\code{\link{icgc_NGCat}}.}
     \item{\code{icgc_CodiCom}}{Codi de les comarques segons els camps \code{Comarca.*} d'\code{\link{icgc_toponimiaMajor}} i \code{CodiCom*} d'\code{\link{icgc_NGCat}}.}
     \item{\code{osm_name}}{Nom de les comarques a OSM.}
+    \item{\code{wikidata}}{Etiqueta wikidata de l'element d'OSM.}
     \item{\code{osm_type}}{Tipus de l'element corresponent a OSM.}
     \item{\code{osm_id}}{Identificador de l'element corresponent a OSM.}
   }
